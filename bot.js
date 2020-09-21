@@ -15,8 +15,8 @@ const unmuteUsers = function(message) {
     sendMessageToChat(message.channel, 'All users can speak');
 };
 const messageCallbacks = {
-    'shh': muteUsers,
-    'speak': unmuteUsers
+    'SHH': muteUsers,
+    'SPEAK': unmuteUsers
 };
 
 client.on('message', message => {
@@ -24,7 +24,7 @@ client.on('message', message => {
 });
 
 function manageMessage(message) {
-    var command = messageCallbacks[message.content];
+    var command = messageCallbacks[message.content.toUpperCase()];
     if (!command) {
         return;
     }
